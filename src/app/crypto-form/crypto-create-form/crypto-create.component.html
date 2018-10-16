@@ -1,0 +1,56 @@
+<mat-card>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="cTicker"
+        ngModel
+        required
+        minlength="3"
+        #title="ngModel"
+        placeholder="CrytoTicker">
+      <mat-error *ngIf="title.invalid">Please enter a cryptoTicker.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="cName"
+          ngModel
+          required
+          minlength="3"
+          #firstname="ngModel"
+          placeholder="CryptoName">
+        <mat-error *ngIf="firstname.invalid">Please enter a post cryptoName.</mat-error>
+      </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        name="cPrice"
+        ngModel
+        required
+        #content="ngModel"
+        placeholder="CryptoPrice">
+      <mat-error *ngIf="content.invalid">Please enter cryptoPrice.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+       [matDatepicker]="dp"
+        placeholder="CryptoDate"
+         [formControl]="date"
+          name="cDate"
+
+      >
+      <mat-datepicker-toggle matSuffix [for]="dp" aria-disabled></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field>
+
+
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Create Crypto</button>
+  </form>
+</mat-card>
